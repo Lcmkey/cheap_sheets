@@ -12,14 +12,14 @@
 1. open the file `pg_hba.conf` for Ubuntu it will be in `/etc/postgresql/9.x/main` and change this line:
 
 |local|all|posgres|peer|
-|-|-|-|-|-|
-||||||
+|---|---|---|---|---|
+| - | - | - | - | - |
 
 to
 
 |local|all|posgres|trust|
-|-|-|-|-|-|
-||||||
+|---|---|---|---|---|
+| - | - | - | - | - |
 
 2. Restart the server
    
@@ -33,14 +33,14 @@ to
 4. Finally change the `pg_hba.conf` from
 
 |local|all|posgres|trust|
-|-|-|-|-|-|
-||||||
+|---|---|---|---|---|
+| - | - | - | - | - |
 
 to
 
 |local|all|posgres|md5|
-|-|-|-|-|-|
-||||||
+|---|---|---|---|---|
+| - | - | - | - | - |
 
 1. Restart the server
 
