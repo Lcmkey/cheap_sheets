@@ -446,6 +446,40 @@ Displays the amount of free and used memory in the complete system.
 
     $ free
 
+### __CHMOD__
+
+To change the permissions of the file participants so that everybody has full access to it,
+
+    $ chmod -R 777 ${dire_name}
+    
+    $ chomod 755 ${file_name}
+
+> -R, –recursiven	Use the -R or –recursiven option to change files and directories recursively
+
+- 4 = Read
+- 2 = Write
+- 1 = Execute
+- 0 = no permission
+
+```
+-rw-r--r-- 12 linuxize users 12.0K Apr  8 20:51 filename.txt
+|[-][-][-]-   [------] [---]
+| |  |  | |      |       |
+| |  |  | |      |       +-----------> 7. Group
+| |  |  | |      +-------------------> 6. Owner
+| |  |  | +--------------------------> 5. Alternate Access Method
+| |  |  +----------------------------> 4. Others Permissions
+| |  +-------------------------------> 3. Group Permissions
+| +----------------------------------> 2. Owner Permissions
++------------------------------------> 1. File Type
+```
+
+### __CHOWN__
+
+To change the owner of a file use the chown command followed by the user name of the new owner and the target file as an argument:
+
+    $ chown ${username} ${file_name}
+
 ### __HISTORY__
 
 Displays the list of all commands entered since the user started the session.
