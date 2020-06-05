@@ -12,40 +12,32 @@
 1. open the file `pg_hba.conf` for Ubuntu it will be in `/etc/postgresql/9.x/main` and change this line:
 
 |local|all|posgres|peer|
-|:---:|:---|:---:|:---:|:---:|
-| - | - | - | - | - |
+|:---:|:---|:---:|:---:|
 
 to
 
 |local|all|posgres|trust|
-|:---:|:---|:---:|:---:|:---:|
-| - | - | - | - | - |
+|:---:|:---|:---:|:---:|
 
-2. Restart the server
+1. Restart the server
    
         $ sudo service postgresql restart
 
-3. Login into psql and set your password
+2. Login into psql and set your password
 
         $ sudo -u postgres psql postgres
         $ ALTER USER postgres with password 'your-pass';
 
-4. Finally change the `pg_hba.conf` from
+3. Finally change the `pg_hba.conf` from
 
-| local | all | posgres | trust |
-| :---: | :--- | :---: | :---: | :---: |
-| - | - | - | - | - |
+|local|all|posgres|trust|
+|:---: |:---|:---:|:---:|
 
 to
 
 |local|all|posgres|md5|
-|:---:|:---|:---:|:---:|:---:|
-| - | - | - | - | - |
+|:---:|:---|:---:|:---:|
 
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
 
 1. Restart the server
 
