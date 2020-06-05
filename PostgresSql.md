@@ -13,11 +13,13 @@
 
 |local|all|posgres|peer|
 |-|-|-|-|-|
+||||||
 
 to
 
 |local|all|posgres|trust|
 |-|-|-|-|-|
+||||||
 
 2. Restart the server
    
@@ -32,13 +34,15 @@ to
 
 |local|all|posgres|trust|
 |-|-|-|-|-|
+||||||
 
 to
 
 |local|all|posgres|md5|
 |-|-|-|-|-|
+||||||
 
-5. Restart the server
+1. Restart the server
 
 > After restarting the postgresql server, you can access it with your own password
 
