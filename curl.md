@@ -1,6 +1,7 @@
 # [Reference (subfuzion)][Reference]
 
----
+&thinsp;
+
 
 # Common Options
 
@@ -93,23 +94,23 @@ For sending data with POST and PUT requests, these are common `curl` options:
 
 `application/x-www-form-urlencoded` is the default:
 
-    curl -X POST -d "param1=value1&param2=value2" http://localhost:3000/data
+    $ curl -X POST -d "param1=value1&param2=value2" http://localhost:3000/data
 
 explicit:
 
-    curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "param1=value1&param2=value2" http://localhost:3000/data
+    $ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "param1=value1&param2=value2" http://localhost:3000/data
 
 with a data file
  
-    curl -X POST -d "@data.txt" http://localhost:3000/data
+    $ curl -X POST -d "@data.txt" http://localhost:3000/data
 
 ### POST application/json
 
-    curl -X POST -H "Content-Type: application/json" -d '{"key1":"value1", "key2":"value2"}' http://localhost:3000/data
+    $ curl -X POST -H "Content-Type: application/json" -d '{"key1":"value1", "key2":"value2"}' http://localhost:3000/data
     
 with a data file
  
-    curl -X POST -d "@data.json" http://localhost:3000/data
+    $ curl -X POST -d "@data.json" http://localhost:3000/data
 
 
 <!-- Reference Link -->
