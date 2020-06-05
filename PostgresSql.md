@@ -32,8 +32,8 @@ to
 
 4. Finally change the `pg_hba.conf` from
 
-|local|all|posgres|trust|
-|:---:|:---|:---:|:---:|:---:|
+| local | all | posgres | trust |
+| :---: | :--- | :---: | :---: | :---: |
 | - | - | - | - | - |
 
 to
