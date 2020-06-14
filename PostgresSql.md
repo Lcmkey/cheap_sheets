@@ -347,5 +347,75 @@ To avoid this error, you can use the IF EXISTS parameter.
 
     postgres=# DROP TABLE IF EXISTS user;
 
+---
+
+# __Returning rows in PostgreSQL with a table called “user” [duplicate]__
+
+`user` is a pseudo-function keyword
+
+`user` is an alias for `current_user`, a built-in pseudo-function. It doesn't have the `()` of most zero-argument functions because that's how the SQL standards committee declared that it would be for `current_user`. I don't know why `user` follows that too, since I don't think the spec requires it.
+
+### __Functions can be used in FROM__
+
+Anyway, it's legal in PostgreSQL to specify a function in from, e.g.
+
+```properties
+regress=# SELECT * from clock_timestamp();
+        clock_timestamp        
+-------------------------------
+ 2020-06-14 16:10:03.017028+00
+(1 row)
+```
+
+because a function that returns a single value can be used in a set-returning context too.
+
+So when you run:
+
+        inventory_app=# select * from user;
+
+you're really doing:
+
+        inventory_app=# select current_user;
+
+`"quoting"` escapes keywords
+
+The reason it "works" if you write `"user"` instead is that quoted identifiers are always user-identifiers, not keywords. `user` is a keyword; `"user"` is a user-defined identifier that's a legal table name.
+
+Confusing, no?
+
+Usually `"tablename"` and `tablename` are the same (quoted-lower-case and unquoted-lower-case), unless `tablename` is a keyword.
+
+This might make more sense if we pick a keyword that isn't a pseudo-function, so it's not legal syntax. Say:
+
+```properties
+regress=> CREATE TABLE "where" (id integer);
+CREATE TABLE
+
+regress=> CREATE TABLE where (id integer);
+ERROR:  syntax error at or near "where"
+LINE 1: CREATE TABLE where (id integer);
+                     ^
+```
+
+### __Quoting makes identifiers case-sensitive__
+
+Normally, PostgreSQL case-folds all identifiers to lower case. This is required by the SQL spec, though it actually requires upper case. So when you:
+
+        inventory_app=# CREATE TABLE MyTable (id integer);
+
+PostgreSQL actually creates a table named `mytable`. However, this case-folding is disabled if you `"double quote"` identifiers - again, per the SQL standard.
+
+So the reason that:
+
+        inventory_app=# select * from "User";
+
+fails is that PostgreSQL, per the SQL standard, treats quoted identifiers as case-sensitive. So `"User"`, `"USER"` and `"user"` are all different things.
+
+
+### __How to avoid these problems?__
+
+Don't name your tables after keywords like type names, function names, etc. It's often legal, but it's rarely a good idea.
+
+If you're going to use keyword names, you should always `"double quote"` them wherever they appear - and in fact make a habit of simply doing that for all your identifiers, all the time, and always using consistent case.
 
 [Postgresql-rederence-link]: https://www.postgresqltutorial.com/
