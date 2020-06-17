@@ -198,6 +198,7 @@ Most `\d` commands support additional param of `__schema__.name__` and accept wi
 - `\dv`: List views
 - `\dx`: List all extensions installed
 - `\df+ __function__` : Show function SQL code. 
+- `\t`: The command means tuples only, so keeping \t to on will ensure that there are no headers, command tags, or wors counts following the results.
 - `\x`: Pretty-format query results instead of the not-so-useful ASCII tables
 - `\copy (SELECT * FROM __table_name__) TO 'file_path_and_name.csv' WITH CSV`: Export a table as CSV
 - `\des+`: List all foreign servers
