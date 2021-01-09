@@ -9,12 +9,22 @@
 
 - <kbd>dotenv</kbd>
 
+**Secure your Express apps**
+helmet
+
+test
+
+```properties
+$ curl http://localhost:4000 --include
+```
+
 **MySQL**
 
 - sequelize
 - sequelize-cli
 - knex
 - mysql2
+- typeorm
 
 **Mongodb**
 
@@ -176,6 +186,9 @@
 | @apollo/federation |                                                                                                  |
 | apollo-link-rest   |                                                                                                  |
 | lerna              |                                                                                                  |
+| camelcase||
+|cls-hooked||
+|mongoose-unique-validator||
 
 ---
 
